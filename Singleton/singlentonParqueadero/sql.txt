@@ -1,0 +1,20 @@
+CREATE DATABASE parqueadero; 
+
+CREATE TABLE vehiculo (
+    placa int  NOT NULL,
+    tiempo int,
+    id_tarifa int,
+    primary key (placa),
+    foreign key(id_tarifa) references Tarifa(id_tarifa)
+);
+
+CREATE TABLE Tarifa (
+    id_tarifa int  NOT NULL,
+    tipo_vehiculo varchar(50),
+    valor_total double,
+    primary key (id_tarifa)
+);
+
+------------------------------------------------------------------------------------------------------
+
+SELECT placa.v, tipo_vehiculo.t, tiempo.v, valor_total.t FROM vehiculo v INNER JOIN tarifa t ON v.id_tarifa=t.id_tarifa;
